@@ -60,7 +60,9 @@
 
 
   /**
-   * RANDOM selection utils.
+   *            so many random
+   *
+   *    such functions
    */
 
   // Generate a random number between two numbers! Wow!
@@ -108,7 +110,9 @@
 
 
   /**
-   * PHRASE utils
+   *      woww the utils
+   *
+   *                      such phrase utils
    */
   function maybeReplaceVowels(phrase) {
     if (Math.random() > ILLITERACY_RATE) {
@@ -149,7 +153,9 @@
 
 
   /**
-   * WORD utils
+   *    oh wow
+   *
+   *          utils for words
    */
 
   // Returns the most common vowel in word.
