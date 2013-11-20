@@ -17,8 +17,10 @@
   };
 
   var REPLACEMENTS = {
-    'error': 'bad doge',
-    'here': 'so amaze'
+    'error': 'bad bad',
+    'here': 'so amaze',
+    'todo': 'must do',
+    'fixme': 'such broken'
   };
 
   function loge() {
@@ -137,7 +139,12 @@
 
   // Replace global things.
   function globalReplacements(phrase) {
-    return phrase.toLowerCase();
+    phrase = phrase.toLowerCase();
+    var targetWords = Object.keys(REPLACEMENTS);
+    for (var i = 0, ii = targetWords.length; i < ii; i += 1) {
+      phrase = phrase.replace(targetWords[i], REPLACEMENTS[targetWords[i]]);
+    }
+    return phrase;
   }
 
   // Adds stars.
