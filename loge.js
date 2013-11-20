@@ -1,6 +1,4 @@
-(function() {
-
-  console = console || {};
+(function(exports) {
 
   var ILLITERACY_RATE = 0.4;  // illiterite
   var CONFUSION_RATE = 0.2;   // *what*
@@ -23,8 +21,7 @@
     'here': 'so amaze'
   };
 
-  console.loge = function() {
-
+  function loge() {
 
     var args = Array.prototype.slice.call(arguments, 0);
 
@@ -197,4 +194,8 @@
     return word;
   }
 
-})();
+
+  exports.console = exports.console || {};
+  exports.console.loge = loge;
+
+})(this);
