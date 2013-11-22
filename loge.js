@@ -25,7 +25,7 @@
 
   function loge() {
 
-    var args = Array.prototype.slice.call(arguments, 0);
+    var args = arguments;
 
     var result = randomSurprise();
     for (var i = 0, ii = args.length; i < ii; i += 1) {
