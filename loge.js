@@ -26,34 +26,39 @@
   function loge() {
 
     var args = arguments;
+    var results = [];
+    var rand = randomSurprise();
 
-    var result = randomSurprise();
+    if (rand) {
+      results.push(rand);
+    }
+
     for (var i = 0, ii = args.length; i < ii; i += 1) {
-      result += randomWhitespace();
-      var phrase = args[i];
+      var phrase = randomWhitespace();
+      var input = args[i];
 
       if (Math.random() < DOGE_RATE) {
-        result += randomPrefix() + ' ';
+        phrase += randomPrefix() + ' ';
       }
 
-      if (typeof phrase === 'string') {
-        phrase = randomPhraseMutation(phrase);
+      if (typeof input === 'string') {
+        phrase += randomPhraseMutation(args[i]);
       } else {
-        result += typeof phrase + ': ';
-        if (typeof phrase === 'object') {
-          phrase = JSON.stringify(phrase);
-        }
+        phrase += (typeof input) + ': ';
+        results.push(phrase);
+
+        // Log objects on their own.
+        phrase = input;
       }
 
-      result += phrase;
+      results.push(phrase);
 
       if (Math.random() < SUPPLIES_RATE) {
-        result += randomWhitespace();
-        result += randomSurprise();
+        results.push(randomWhitespace() + randomSurprise());
       }
     }
 
-    console.log(result);
+    console.log.apply(console, results);
 
   }
 
