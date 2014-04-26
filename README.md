@@ -1,6 +1,6 @@
 # console.loge
 
-![console.loge](http://i.imgur.com/qZGjRbJ.png)
+http://blog.michellebu.com/assets/loge.html
 
 ```html
 <script src="loge.js"></script>

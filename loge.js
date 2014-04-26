@@ -23,6 +23,8 @@
     'fixme': 'such broken'
   };
 
+  var isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+
   function loge() {
 
     var args = arguments;
@@ -58,8 +60,15 @@
       }
     }
 
-    console.log.apply(console, results);
+    if (isChrome) {
+      completeResult = results.join('');
+      results = [];
+      results.push('%c%s');
+      results.push('font-family: Comic Sans MS; line-height: 2em; font-size: 1.5em; color: ' + randomColor());
+      results.push(completeResult);
+    }
 
+    console.log.apply(console, results);
   }
 
 
@@ -72,6 +81,10 @@
   // Generate a random number between two numbers! Wow!
   function randomNumber(min, max) {
     return Math.floor(Math.random() * max) + min;
+  }
+
+  function randomColor() {
+    return ['red', 'blue', 'green', 'aqua', 'magenta', 'yellow'][randomNumber(0, 5)];
   }
 
   // Select a random prefix! Wow!
