@@ -1,5 +1,4 @@
 (function(exports) {
-
   var ILLITERACY_RATE = 0.4;  // illiterite
   var CONFUSION_RATE = 0.2;   // *what*
   var SUPPLIES_RATE = 0.1;    // wow, who am i?
@@ -26,7 +25,6 @@
   var isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
 
   function loge() {
-
     var args = arguments;
     var results = [];
     var rand = randomSurprise();
@@ -70,7 +68,6 @@
 
     console.log.apply(console, results);
   }
-
 
   /**
    *            so many random
@@ -125,7 +122,6 @@
     return phrase;
   }
 
-
   /**
    *      woww the utils
    *
@@ -173,7 +169,6 @@
     return phrase;
   }
 
-
   /**
    *    oh wow
    *
@@ -219,8 +214,6 @@
     return word;
   }
 
-
   exports.console = exports.console || {};
   exports.console.loge = loge;
-
 })(this);
