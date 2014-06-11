@@ -164,9 +164,11 @@
   // Adds stars.
   function maybeAddStars(phrase) {
     if (Math.random() < CONFUSION_RATE) {
-      phrase = '*' + phrase + '*';
+      return '*' + phrase + '*';
     }
-    return phrase;
+    else {
+      return phrase;
+    }
   }
 
   /**
