@@ -59,11 +59,21 @@
     }
 
     if (isChrome) {
-      completeResult = results.join('');
+      var temp = results;
       results = [];
-      results.push('%c%s');
-      results.push('font-family: Comic Sans MS; line-height: 2em; font-size: 1.5em; color: ' + randomColor());
-      results.push(completeResult);
+      var format = '';
+      for(var i = 0; i < temp.length; i++){
+        format = format + '%c%s';
+      }
+
+      results.push(format);
+      
+      for(var i = 0; i < temp.length; i++){
+        var color = randomColor();
+        results.push('font-family: Comic Sans MS; line-height: 2em; font-size: 1.5em; color: ' + color);
+        results.push(temp[i] + ',');
+      }
+
     }
 
     console.log.apply(console, results);
@@ -219,3 +229,4 @@
   exports.console = exports.console || {};
   exports.console.loge = loge;
 })(this);
+
