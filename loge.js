@@ -1,4 +1,5 @@
 (function(exports) {
+
   var ILLITERACY_RATE = 0.4;  // illiterite
   var CONFUSION_RATE = 0.2;   // *what*
   var SUPPLIES_RATE = 0.1;    // wow, who am i?
@@ -25,6 +26,7 @@
   var isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
 
   function loge() {
+
     var args = arguments;
     var results = [];
     var rand = randomSurprise();
@@ -59,15 +61,26 @@
     }
 
     if (isChrome) {
-      completeResult = results.join('');
+      var temp = results;
       results = [];
-      results.push('%c%s');
-      results.push('font-family: Comic Sans MS; line-height: 2em; font-size: 1.5em; color: ' + randomColor());
-      results.push(completeResult);
+      var format = '';
+      for(var i = 0; i < temp.length; i++){
+        format = format + '%c%s';
+      }
+
+      results.push(format);
+      
+      for(var i = 0; i < temp.length; i++){
+        var color = randomColor();
+        results.push('font-family: Comic Sans MS; line-height: 2em; font-size: 1.5em; color: ' + color);
+        results.push(temp[i] + ',');
+      }
+
     }
 
     console.log.apply(console, results);
   }
+
 
   /**
    *            so many random
@@ -122,6 +135,7 @@
     return phrase;
   }
 
+
   /**
    *      woww the utils
    *
@@ -164,12 +178,11 @@
   // Adds stars.
   function maybeAddStars(phrase) {
     if (Math.random() < CONFUSION_RATE) {
-      return '*' + phrase + '*';
+      phrase = '*' + phrase + '*';
     }
-    else {
-      return phrase;
-    }
+    return phrase;
   }
+
 
   /**
    *    oh wow
@@ -216,6 +229,9 @@
     return word;
   }
 
+
   exports.console = exports.console || {};
   exports.console.loge = loge;
+
 })(this);
+
