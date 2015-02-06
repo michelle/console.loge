@@ -51,22 +51,31 @@
         phrase = input;
       }
 
-      results.push(phrase);
-
       if (Math.random() < SUPPLIES_RATE) {
         results.push(randomWhitespace() + randomSurprise());
       }
     }
 
     if (isChrome) {
-      completeResult = results.join('');
-      results = [];
-      results.push('%c%s');
-      results.push('font-family: Comic Sans MS; line-height: 2em; font-size: 1.5em; color: ' + randomColor());
-      results.push(completeResult);
+    
+      /* Gets the control string */      
+      control_string = "";
+      for (var i = 0; i < results.length; i++){
+        control_string += '%c%s';
+      }
+
+      /* arr is the array to return */
+      arr = [];
+      arr.push (control_string);
+
+      /* Push the formatting and the strings */
+      for (var i = 0; i < results.length; i++){
+        arr.push('font-family: Comic Sans MS; line-height: 2em; font-size: 1.5em; color: ' + randomColor());
+        arr.push(results[i]);
+      }
     }
 
-    console.log.apply(console, results);
+    console.log.apply(console, arr);
   }
 
   /**
